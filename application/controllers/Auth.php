@@ -39,6 +39,7 @@ class Auth extends CI_Controller
 	public function register()
 	{
 		$form_data = $this->input->post();
+		$form_data['password'] = password_hash($form_data['password'], PASSWORD_BCRYPT);
 		$user = $this->User->new($form_data);
 
 		$this->session->set_flashdata('success', "Added new user '" . $form_data['username'] . "' Successfully.");
