@@ -27,10 +27,12 @@ class Pages extends CI_Controller
     public function index()
     {
         $this->load->model('Menu');
+        $menu = $this->Menu->all_master();
         $data = [
             'page' => [
-                'title' => "Home". " • " . APP_NAME
-            ]
+                'title' => "Home". " • " . APP_NAME,
+                'master' => $menu
+            ],
         ];
         $this->load->view('pages/index', $data);
     }
